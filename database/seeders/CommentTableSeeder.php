@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Comment;
+
 
 class CommentTableSeeder extends Seeder
 {
@@ -13,6 +15,14 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $comm1 = new Comment();
+        $comm1->text="Ditch the rover";
+        $comm1->post_id=12;
+        $comm1->save();
+
+        $comm2 = new Comment();
+        $comm2->text="VTEC JUST KICKED IN!!!";
+        $comm2->post_id=43;
+        $comm2->save();
     }
 }

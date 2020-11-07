@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->boolean('solved'); // Whether an accepted answer has been found
 
-            $table->unsignedInteger('author_id'); // User the post belongs to
+            $table->unsignedBigInteger('author_id'); // User the post belongs to
 
         });
     }

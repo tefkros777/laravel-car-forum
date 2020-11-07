@@ -14,16 +14,20 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        $tag1 = new Tag();
-        $tag1->label="Exhaust";
-        $tag1->save();
+        // Create 4 tags using the factory
+        $tags = Tag::factory()->count(4)->create();
+        
+        // Without a factory:
+        // $tag1 = new Tag();
+        // $tag1->label="Exhaust";
+        // $tag1->save();
 
-        $tag2 = new Tag();
-        $tag2->label="Oil Leaks";
-        $tag2->save();
+        // $tag2 = new Tag();
+        // $tag2->label="Oil Leaks";
+        // $tag2->save();
 
-        $tag3 = new Tag();
-        $tag3->label="Electrical";
-        $tag3->save();
+        // $tag3 = new Tag();
+        // $tag3->label="Electrical";
+        // $tag3->save();
     }
 }

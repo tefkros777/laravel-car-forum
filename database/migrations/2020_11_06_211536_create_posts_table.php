@@ -21,7 +21,9 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->boolean('solved'); // Whether an accepted answer has been found
 
-            $table->unsignedBigInteger('author_id'); // User the post belongs to
+            $table->unsignedBigInteger('user_id'); // User the post belongs to
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

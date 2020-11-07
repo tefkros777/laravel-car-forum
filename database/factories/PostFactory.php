@@ -25,7 +25,7 @@ class PostFactory extends Factory
         return [
             'title'=>$this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'description'=>$this->faker->realText($maxNbChars = 200, $indexSize = 2),
-            'author_id'=>function(){
+            'user_id'=>function(){
                 $user_ids = User::pluck('id')->toArray(); // Create a collection with all the IDs of the existing users
                 return $this->faker->randomElement($user_ids); // Return a random existing ID
             },

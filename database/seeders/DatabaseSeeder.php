@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Another way of calling the factory, bypassing the UserTableSeeder class. Both are correct
-        // \App\Models\User::factory(10)->create();
-
+        // Call the respective Seeder class for each table
         $this->call(UserTableSeeder::class);
-        $this->call(TagTableSeeder::class);
+        // No need to seed Tags as PostTableSeeder does it for us
         $this->call(PostTableSeeder::class);
         $this->call(CommentTableSeeder::class);
     }

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -27,6 +28,10 @@ class CommentFactory extends Factory
             'post_id'=>function(){
                 $post_ids = Post::pluck('id')->toArray(); // Create a collection with all the IDs of the existing posts
                 return $this->faker->randomElement($post_ids); // Return a random existing post ID
+            },
+            'user_id'=>function(){
+                $user_ids = User::pluck('id')->toArray(); // Create a collection with all the IDs of the existing users
+                return $this->faker->randomElement($user_ids); // Return a random existing post ID
             },
         ];
     }

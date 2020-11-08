@@ -18,7 +18,13 @@ class CreateCommentsTable extends Migration
             $table->timestamps();
 
             $table->string('text');
+
             $table->unsignedBigInteger('post_id'); // The post the comment is under
+            $table->unsignedBigInteger('user_id'); // The user who posted the comment
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+
         });
     }
 

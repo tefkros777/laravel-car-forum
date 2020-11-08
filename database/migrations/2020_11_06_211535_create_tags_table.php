@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// This has to be seeded before the posts table
+
 class CreateTagsTable extends Migration
 {
     /**

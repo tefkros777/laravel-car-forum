@@ -24,3 +24,8 @@ Route::get('/home', function () {
 Route::get('posts', 'PostController@index');
 
 Route::get('posts/{id}', 'PostController@show')->name('posts.show');
+
+Route::get('users', 'UserController@index');
+
+Route::get('user/{id}', 'UserController@show')->name('users.show');
+

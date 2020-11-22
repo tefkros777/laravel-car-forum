@@ -23,8 +23,8 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->sentence($nbWords = 6, $variableNbWords = true),
-            'description'=>$this->faker->realText($maxNbChars = 200, $indexSize = 2),
+            'title'=>$this->faker->realText($maxNbChars = 50),
+            'description'=>$this->faker->sentence($nbWords = 15, $variableNbWords = true),
             'user_id'=>function(){
                 $user_ids = User::pluck('id')->toArray(); // Create a collection with all the IDs of the existing users
                 return $this->faker->randomElement($user_ids); // Return a random existing ID

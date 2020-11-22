@@ -21,6 +21,8 @@ Route::get('/home', function () {
     return 'Welcome to the largest car troubleshooting community, Jeremy Clarkson aprooved!';
 });
 
-Route::get('/posts', function () {
-    return view('post');
-});
+// Route::get('/posts', function () {
+//     return view('post');
+// });
+
+Route::get('posts', 'PostController@index');

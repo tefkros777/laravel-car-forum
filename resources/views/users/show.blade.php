@@ -5,9 +5,9 @@
 @section('content')
 
 <ul>
-    <li>User ID: {{ $user->id }}</li>
-    <li>Name: {{ $user->name }}</li>
-    <li>email: {{ $user->email }}</li>
+    <li><b>User ID:</b> {{ $user->id }}</li>
+    <li><b>Name:</b> {{$user->name }}</li>
+    <li><b>email:</b> {{ $user->email }}</li>
 </ul>
 
 @endsection

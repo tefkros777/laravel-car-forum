@@ -5,19 +5,21 @@
 @section('content')
 
 <ul>
-    <li>Post ID: {{ $post->id }}</li>
-    <li>Title: {{ $post->title }}</li>
-    {{-- <li>Author: {{ $post->user->name }} (User ID: {{ $post->user->id }})</li> --}}
-    <li><a href="{{ route('users.show', ['id' => $post->user->id]) }}">Author: {{ $post->user->name }}</a></li>
+    <li><b>Post ID:</b> {{ $post->id }}</li>
+    <li><b>Title:</b> {{ $post->title }}</li>
+    <li><a href="{{ route('users.show', ['id' => $post->user->id]) }}"><b>Author:</b> {{ $post->user->name }}</a></li>
 
 
     @if($post->solved == 1)
-    <li>Solved: Yes</li>
+    <li><b>Solved:</b> Yes</li>
     @else
-    <li>Solved: No</li>
+    <li><b>Solved:</b> No</li>
     @endif
 
-    <li>Body: {{ $post->description }}</li>
+    <li><b>Body:</b> {{ $post->description }}</li>
+
+    {{-- To include comments too --}}
+
 </ul>
 
 @endsection

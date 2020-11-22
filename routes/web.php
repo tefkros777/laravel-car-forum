@@ -27,5 +27,5 @@ Route::get('posts/{id}', 'PostController@show')->name('posts.show');
 
 Route::get('users', 'UserController@index');
 
-Route::get('user/{id}', 'UserController@show')->name('users.show');
+Route::get('users/{id}', 'UserController@show')->name('users.show');
 

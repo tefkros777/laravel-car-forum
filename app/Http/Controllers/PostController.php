@@ -42,7 +42,16 @@ class PostController extends Controller
             'description' => 'required',
         ]);
 
-        return "Passed Validation";
+        // Create the model, put the data in it, save it to the database
+        $p = new Post;
+        $p->title = $validatedData['title'];
+        $p->description = $validatedData['description'];
+        $p->user_id = $validatedData['user_id'];
+        $p->save();
+
+        session()->flash('message', "Post created successfully");
+
+        return redirect()->route('posts.index');
     }
 
     /**

@@ -38,7 +38,11 @@ class PostController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required|numeric',
+            'title' => 'required|max:255',
+            'description' => 'required',
         ]);
+
+        return "Passed Validation";
     }
 
     /**

@@ -21,11 +21,16 @@ Route::get('/home', function () {
     return 'Welcome to the largest car troubleshooting community, Jeremy Clarkson aprooved!';
 });
 
-Route::get('posts', 'PostController@index');
+Route::get('posts', 'PostController@index')->name('posts.index');
+
+Route::get('posts/create', 'PostController@create')->name('posts.create');
+
+Route::post('posts', 'PostController@store')->name('posts.store');
 
 Route::get('posts/{id}', 'PostController@show')->name('posts.show');
 
-Route::get('users', 'UserController@index');
+
+Route::get('users', 'UserController@index')->name('users.index');
 
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 

@@ -11,4 +11,6 @@
     @endforeach
 </ul>
 
+<a href="{{ route('posts.create') }}">Create New Post</a>
+
 @endsection

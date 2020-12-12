@@ -18,8 +18,6 @@
 
     <li><b>Body:</b> {{ $post->description }}</li>
 
-    {{-- To include comments too --}}
-
 </ul>
 
 {{-- Delete post --}}
@@ -28,6 +26,18 @@
     @csrf
     <button>Delete Post</button>
 </form>
+
+
+<h2>Comments</h2>
+@foreach ($comments as $comment)
+    <h3>Comment ID: {{$comment->id}}</h3>
+    <h3>By user:
+        <a href="{{ route('users.show', ['id' => $comment->user->id]) }}">
+            {{ $comment->user->name }} ({{$comment->user_id}})
+        </a>
+    </h3>
+    <h3>Text: {{$comment->text}}</h3>
+@endforeach
 
 @endsection
 

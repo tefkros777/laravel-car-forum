@@ -11,4 +11,6 @@
     @endforeach
 </ul>
 
+<a href="{{ route('users.create') }}">New User</a>
+
 @endsection

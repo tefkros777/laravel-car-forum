@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -36,7 +36,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+        ]);
+
+        // Create the model, put the data in it, save it to the database
+        $u = new User;
+        $u->name = $validatedData['name'];
+        $u->email = $validatedData['email'];
+        $u->save();
+
+        session()->flash('message', "User created successfully");
+
+        return redirect()->route('users.index');
     }
 
     /**

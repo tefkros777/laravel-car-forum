@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -26,7 +27,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        // Pass in the collection of all users to use in the dropdown menu
+        $users = User::orderBy('id','asc')->get();
+        return view('posts.create', ['users' => $users]);
     }
 
     /**

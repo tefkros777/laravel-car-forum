@@ -13,9 +13,15 @@
     <p>Description: <input type="text" name="description"
         value="{{ old('description') }}"></p>
 
-    <p>User ID: <input type="text" name="user_id"
-        value="{{ old('user_id') }}"></p>
-
+    <p>User
+        <select name="user_id">
+            @foreach ($users as $user)
+                <option value="{{$user->id}}">
+                    {{$user->name}} ({{$user->id}})
+                </option>
+            @endforeach
+        </select>
+    </p>
     <input type="submit" value="Submit">
 
     <a href="{{ route('posts.index') }}">Cancel</a>

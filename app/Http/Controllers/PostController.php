@@ -64,9 +64,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($id);
         $comments = Comment::all()->where('post_id', $post->id);
         return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
@@ -100,9 +99,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($id);
         $post->delete();
         session()->flash('message', "Post deleted");
         return redirect()->route('posts.index');

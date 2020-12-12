@@ -10,4 +10,10 @@
     <li><b>email:</b> {{ $user->email }}</li>
 </ul>
 
+<form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button>Delete User</button>
+</form>
+
 @endsection

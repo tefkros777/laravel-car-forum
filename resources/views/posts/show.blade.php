@@ -22,6 +22,13 @@
 
 </ul>
 
+{{-- Delete post --}}
+<form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <button>Delete Post</button>
+</form>
+
 @endsection
 
 

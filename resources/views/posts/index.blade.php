@@ -3,7 +3,7 @@
 @section('title', 'All Posts')
 
 @section('content')
-<p>This is a list of all the posts in the database</p>
+<h3>All posts</h3>
 
 <ul>
     @foreach ($posts as $post)

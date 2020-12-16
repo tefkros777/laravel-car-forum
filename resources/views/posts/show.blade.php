@@ -4,6 +4,7 @@
 
 @section('content')
 
+<h2>View Post</h2>
 <ul>
     <li><b>Post ID:</b> {{ $post->id }}</li>
     <li><b>Title:</b> {{ $post->title }}</li>
@@ -28,7 +29,7 @@
 </form>
 
 
-<h2>Comments</h2>
+<h3>Comments</h3>
 @foreach ($comments as $comment)
     <h3>Comment ID: {{$comment->id}}</h3>
     <h3>By user:

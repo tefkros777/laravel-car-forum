@@ -76,11 +76,9 @@
         </nav>
 
         <div class="w-75 p-3 mx-auto">
-            <div class="card container-fluid">
-                <main class="py-4">
-                    @yield('content')
-                </main>
-            </div>
+            <main class="py-4">
+                @yield('content')
+            </main>
         </div>
 
     </div>

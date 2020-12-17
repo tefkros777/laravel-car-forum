@@ -3,14 +3,20 @@
 @section('title', 'All Users')
 
 @section('content')
-<p>This is a list of all the users in the database</p>
+    <div class="card bg-light mb-3">
+            <div class="card-header">
+                <h3>All Users</h3>
+            </div>
 
-<ul>
-    @foreach ($users as $user)
-    <li><a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->name }}</a></li>
-    @endforeach
-</ul>
+        <ul>
+            @foreach ($users as $user)
+            <li><a href="{{ route('users.show', ['id' => $user->id]) }}">{{ $user->name }}</a></li>
+            @endforeach
+        </ul>
 
-<a href="{{ route('users.create') }}">New User</a>
+        <div class="card-footer">
+            <a class="btn btn-success" href="{{ route('users.create') }}">New User</a>
+        </div>
+    </div>
 
 @endsection

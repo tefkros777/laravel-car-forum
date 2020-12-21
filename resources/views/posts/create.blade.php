@@ -4,6 +4,9 @@
 
 @section('content')
 
+<h3>New Post</h3>
+<h5>Posting as {{Auth::user()->name}}</h5>
+
 <form method="POST" action="{{ route('posts.store') }}">
     @csrf
 
@@ -13,15 +16,8 @@
     <p>Description: <input type="text" name="description"
         value="{{ old('description') }}"></p>
 
-    <p>User
-        <select name="user_id">
-            @foreach ($users as $user)
-                <option value="{{$user->id}}">
-                    {{$user->name}} ({{$user->id}})
-                </option>
-            @endforeach
-        </select>
-    </p>
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
     <input type="submit" value="Submit">
 
     <a href="{{ route('posts.index') }}">Cancel</a>

@@ -28,7 +28,8 @@ class PostController extends Controller
     public function create()
     {
         // Pass in the collection of all users to use in the dropdown menu
-        $users = User::orderBy('id','asc')->get();
+
+        $users = User::orderBy('id','asc')->get(); //dead code
         return view('posts.create', ['users' => $users]);
     }
 

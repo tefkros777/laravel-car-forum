@@ -17,9 +17,11 @@
         </div>
         {{-- Description --}}
         <div class="card-body">
-            <input class="border-0" type="text" name="description" placeholder="Description"
-                value="{{ old('description') }}">
-
+            <div style="float: left; width: 100%;">
+                <textarea class="border-0" name="description" rows="4" placeholder="Description"
+                 style="width: 100%; max-width: 100%;"
+                 value="{{ old('description') }}"></textarea>
+            </div>
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         </div>
 

@@ -38,11 +38,6 @@ Route::get('users/{id}', 'UserController@show')->name('users.show');
 Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
 
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

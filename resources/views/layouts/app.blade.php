@@ -75,6 +75,22 @@
             </div>
         </nav>
 
+        @if (\Session::has('message'))
+        <div class="alert alert-primary">
+            <h5>{!! \Session::get('message') !!}</h5>
+        </div>
+        @endif
+
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li><b>{{ $error }}</b></li>
+                    </ul>
+                @endforeach
+            </div>
+        @endif
+
         <div class="w-75 p-3 mx-auto">
             <main class="py-4">
                 @yield('content')

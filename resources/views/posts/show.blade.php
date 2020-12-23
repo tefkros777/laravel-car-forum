@@ -30,7 +30,34 @@
         </div>
     </div>
 
+    {{-- Comment Section --}}
     <h3>Comments</h3>
+
+    {{-- Post comment if authenticated --}}
+    @if(Auth::check())
+
+    <form method="POST" action="{{ route('comments.add') }}">
+        @csrf
+        <div class="card bg-light mb-3">
+            <div class="card-header">
+                <i>Commenting as {{Auth::user()->name}}</i>
+            </div>
+            <div class="card-body">
+                <textarea class="border-0" name="text" rows="3" placeholder="Your comment here..."
+                style="width: 100%; max-width: 100%;"></textarea>
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Comment" class="btn btn-primary">
+            </div>
+        </div>
+        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}" />
+        <input type="hidden" name="user_id" id="user_id" value="{{ $post->user->id }}" />
+    </form>
+    @else
+        <h5><i>You must me logged in to post comments</i></h5>
+    @endif
+
+    {{-- Existing comments --}}
     @foreach ($comments as $comment)
         <div class="card bg-light mb-3">
             <div class="card-header">

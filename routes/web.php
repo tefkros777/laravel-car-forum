@@ -38,6 +38,9 @@ Route::post('users', 'UserController@store')->name('users.store');
 Route::get('users/{id}', 'UserController@show')->name('users.show');
 Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
 
+// COMMENTS
+Route::post('comments', 'CommentController@store')->name('comments.add')
+    ->middleware('auth');
 
 Auth::routes();
 

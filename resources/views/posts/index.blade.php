@@ -15,8 +15,10 @@
             @endforeach
         </ul>
 
-    <div class="card-footer">
-        <a class="btn btn-success" href="{{ route('posts.create') }}">Create New Post</a>
-    </div>
-
+    {{-- Show Create Post button only if user is authenticated --}}
+    @if(Auth::check())
+        <div class="card-footer">
+            <a class="btn btn-success" href="{{ route('posts.create') }}">Create New Post</a>
+        </div>
+    @endif
 @endsection

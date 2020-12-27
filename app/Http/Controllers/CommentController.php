@@ -68,9 +68,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        if ($comment->user->id != Auth::user()->id){
+            return redirect()->back()->with('message', 'You are not authorised to edit this comment');
+        }
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -82,7 +85,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'text' => 'required'
+        ]);
+
+        $c = Comment::find($id);
+        $c->text = $validatedData['text'];
+        $c->save();
+
+        return redirect()->route('posts.index')->with('message', 'Comment edited successfully');
     }
 
     /**

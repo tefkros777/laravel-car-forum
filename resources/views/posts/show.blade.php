@@ -83,12 +83,12 @@
                 <div class="card-footer">
                     <div class="d-flex">
                         {{-- Edit button --}}
-                        {{-- <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a> --}}
+                        <a class="btn btn-primary" href="/comments/{{$comment->id}}/edit">Edit</a>
                         {{-- Delete button --}}
                         <form action="{{ route('comments.destroy', ['comment' => $comment]) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger">Delete Comment</button>
+                            <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
                 </div>

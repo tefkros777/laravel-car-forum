@@ -67,7 +67,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = Comment::all()->where('post_id', $post->id);
+        $comments = Comment::where('post_id', $post->id)->paginate(5);
         return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 

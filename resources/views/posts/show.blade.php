@@ -74,6 +74,11 @@
         </div>
     @endforeach
 
+    {{-- Pagination --}}
+    <div class="d-flex justify-content-center">
+        {!! $comments->links() !!}
+    </div>
+
     </div>
 
 @endsection

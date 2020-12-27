@@ -17,7 +17,7 @@ class PostTableSeeder extends Seeder
     {
         $posts = Post::factory()
             ->has(Tag::factory()->count(3)) // Create 3 tags and attach them to the post
-            ->count(10)->create();
+            ->count(12)->create();
 
         // $post = new Post();
         // $post->title='Weird noise from AC';

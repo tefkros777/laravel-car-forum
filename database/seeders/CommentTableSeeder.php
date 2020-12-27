@@ -16,7 +16,7 @@ class CommentTableSeeder extends Seeder
     public function run()
     {
         // Create 15 comments using the factory
-        $comments = Comment::factory()->count(15)->create();
+        $comments = Comment::factory()->count(50)->create();
 
         // Without factory:
         // $comm1 = new Comment();

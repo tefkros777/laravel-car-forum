@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
     {
 
         // Just create 3 users using the factory
-        $users = User::factory()->count(3)->create();
+        $users = User::factory()->count(12)->create();
 
         // Without a factory:
         // $user1 = new User();

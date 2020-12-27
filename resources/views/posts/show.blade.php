@@ -78,6 +78,21 @@
             <div class="card-body">
                 <p class="card-text">{{ $comment->text }}</p>
             </div>
+            {{-- Show edit and delete button only if authenrticated user is the comment's author --}}
+            @if ($post->user->id == Auth::user()->id)
+                <div class="card-footer">
+                    <div class="d-flex">
+                        {{-- Edit button --}}
+                        {{-- <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a> --}}
+                        {{-- Delete button --}}
+                        <form action="{{ route('comments.destroy', ['comment' => $comment]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">Delete Comment</button>
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     @endforeach
 

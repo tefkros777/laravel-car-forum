@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 
 class CommentController extends Controller
@@ -90,8 +91,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        if ($comment->user->id != Auth::user()->id){
+            return redirect()->back()->with('message', 'You are not authorised to delete this comment');
+        }
+        $comment->delete();
+        return redirect()->back()->with('message', "Comment deleted");
     }
 }

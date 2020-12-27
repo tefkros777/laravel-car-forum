@@ -41,8 +41,9 @@ Route::get('users/{id}', 'UserController@show')->name('users.show');
 Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
 
 // COMMENTS
-Route::post('comments', 'CommentController@store')->name('comments.add')
-    ->middleware('auth');
+Route::post('comments', 'CommentController@store')->name('comments.add')->middleware('auth');
+Route::delete('comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
+
 
 Auth::routes();
 

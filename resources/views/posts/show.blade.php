@@ -21,12 +21,16 @@
             <li><b>Body:</b> {{ $post->description }}</li>
         </ul>
         <div class="card-footer">
-            {{-- Delete post --}}
-            <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-danger">Delete Post</button>
-            </form>
+            <div class="d-flex">
+                {{-- Edit button --}}
+                <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a>
+                {{-- Delete button --}}
+                <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-danger">Delete Post</button>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -19,7 +19,7 @@
         </div>
 
         <div class="card-footer">
-            <input type="submit" value="Save" class="btn btn-primary">
+            <input type="submit" value="Save" class="btn btn-primary mr-1">
             <a class="btn btn-secondary" href="{{ route('posts.index') }}">Cancel</a>
         </div>
     </div>

@@ -25,7 +25,7 @@
         <div class="card-footer">
             <div class="d-flex">
                 {{-- Edit button --}}
-                <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a>
+                <a class="btn btn-dark mr-1" href="/posts/{{$post->id}}/edit">Edit</a>
                 {{-- Delete button --}}
                 <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
                     @method('DELETE')
@@ -83,7 +83,7 @@
                 <div class="card-footer">
                     <div class="d-flex">
                         {{-- Edit button --}}
-                        <a class="btn btn-primary" href="/comments/{{$comment->id}}/edit">Edit</a>
+                        <a class="btn btn-dark mr-1" href="/comments/{{$comment->id}}/edit">Edit</a>
                         {{-- Delete button --}}
                         <form action="{{ route('comments.destroy', ['comment' => $comment]) }}" method="POST">
                             @method('DELETE')

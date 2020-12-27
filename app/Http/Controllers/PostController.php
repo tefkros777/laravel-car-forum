@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -79,6 +80,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if ($post->user->id != Auth::user()->id){
+            return redirect()->route('posts.index')->with('message', 'You are not authorised to edit this resource');
+        }
         return view('posts.edit', ['post' => $post]);
     }
 

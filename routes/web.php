@@ -25,15 +25,12 @@ Route::get('/home', function () {
 
 // POSTS
 Route::get('posts', 'PostController@index')->name('posts.index');
-Route::get('posts/create', 'PostController@create')->name('posts.create')
-    ->middleware('auth');
+Route::get('posts/create', 'PostController@create')->name('posts.create')->middleware('auth');
 Route::post('posts', 'PostController@store')->name('posts.store');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::delete('posts/{post}', 'PostController@destroy')->name('posts.destroy');
-Route::get('posts/{post}/edit', 'PostController@edit')->name('posts.edit')
-    ->middleware('auth');
-Route::put('posts/{post}/store', 'PostController@update')->name('posts.update')
-    ->middleware('auth');
+Route::get('posts/{post}/edit', 'PostController@edit')->name('posts.edit')->middleware('auth');
+Route::put('posts/{post}/store', 'PostController@update')->name('posts.update')->middleware('auth');
 
 
 // USERS

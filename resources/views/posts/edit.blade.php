@@ -8,6 +8,7 @@
 
 <form method="POST" action="{{ route('posts.update', $post) }}">
     @csrf
+    @method('PUT')
     <div class="card bg-light mb-3">
         {{-- Title --}}
         <div class="card-header">
@@ -18,7 +19,7 @@
         <div class="card-body">
             <div style="float: left; width: 100%;">
                 <textarea class="border-0" name="description" rows="4" placeholder="Description"
-                 style="width: 100%; max-width: 100%;">{{ $post->description }}"</textarea>
+                 style="width: 100%; max-width: 100%;">{{ $post->description }}</textarea>
             </div>
         </div>
 

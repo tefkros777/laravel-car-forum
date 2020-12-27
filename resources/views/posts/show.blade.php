@@ -21,6 +21,8 @@
             <li><b>Body:</b> {{ $post->description }}</li>
         </ul>
         <div class="card-footer">
+        {{-- Show edit and delete button only if authenrticated user is the post's author --}}
+        @if ($post->user->id == Auth::user()->id)
             <div class="d-flex">
                 {{-- Edit button --}}
                 <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a>
@@ -31,6 +33,7 @@
                     <button class="btn btn-danger">Delete Post</button>
                 </form>
             </div>
+        @endif
         </div>
     </div>
 

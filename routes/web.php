@@ -46,6 +46,10 @@ Route::delete('comments/{comment}', 'CommentController@destroy')->name('comments
 Route::get('comments/{comment}/edit', 'CommentController@edit')->name('comments.edit')->middleware('auth');
 Route::put('comments/{comment}/store', 'CommentController@update')->name('comments.update')->middleware('auth');
 
+// TAGS
+Route::get('tags', 'TagController@index')->name('tags.index');
+Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
+
 
 Auth::routes();
 

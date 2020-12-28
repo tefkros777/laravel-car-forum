@@ -19,6 +19,13 @@
             <li><b>Solved:</b> No</li>
             @endif
             <li><b>Body:</b> {{ $post->description }}</li>
+            <li><b>Tags:</b>
+                <ul>
+                    @foreach ($post->tags as $tag)
+                        <li><a href="{{ route('tags.index', ['id' => $tag->id]) }}">{{$tag->label}}</a></li>
+                    @endforeach
+                </ul>
+            </li>
         </ul>
         {{-- Show edit and delete button only if authenrticated user is the post's author --}}
         {{-- @if(Auth::check()) --}}

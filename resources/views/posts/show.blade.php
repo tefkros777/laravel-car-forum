@@ -21,20 +21,22 @@
             <li><b>Body:</b> {{ $post->description }}</li>
         </ul>
         {{-- Show edit and delete button only if authenrticated user is the post's author --}}
-        @if ($post->user->id == Auth::user()->id)
-        <div class="card-footer">
-            <div class="d-flex">
-                {{-- Edit button --}}
-                <a class="btn btn-dark mr-1" href="/posts/{{$post->id}}/edit">Edit</a>
-                {{-- Delete button --}}
-                <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger">Delete Post</button>
-                </form>
+        {{-- @if(Auth::check()) --}}
+            @if (Auth::check() && ($post->user->id == Auth::user()->id))
+            <div class="card-footer">
+                <div class="d-flex">
+                    {{-- Edit button --}}
+                    <a class="btn btn-dark mr-1" href="/posts/{{$post->id}}/edit">Edit</a>
+                    {{-- Delete button --}}
+                    <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger">Delete Post</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        @endif
+            @endif
+        {{-- @endif --}}
     </div>
 
     {{-- Comment Section --}}
@@ -79,7 +81,7 @@
                 <p class="card-text">{{ $comment->text }}</p>
             </div>
             {{-- Show edit and delete button only if authenrticated user is the comment's author --}}
-            @if ($post->user->id == Auth::user()->id)
+            @if (Auth::check() && ($post->user->id == Auth::user()->id))
                 <div class="card-footer">
                     <div class="d-flex">
                         {{-- Edit button --}}

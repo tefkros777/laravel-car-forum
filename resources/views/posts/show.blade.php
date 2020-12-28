@@ -22,7 +22,7 @@
             <li><b>Tags:</b>
                 <ul>
                     @foreach ($post->tags as $tag)
-                        <li><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{$tag->label}}</a></li>
+                        <li><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{$tag->label}} ({{$tag->id}})</a></li>
                     @endforeach
                 </ul>
             </li>

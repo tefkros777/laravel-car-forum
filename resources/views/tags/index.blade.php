@@ -10,7 +10,7 @@
 
         <ul>
             @foreach ($tags as $tag)
-            <li><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }}</a></li>
+            <li><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }} (ID: {{$tag->id}})</a></li>
             @endforeach
         </ul>
 

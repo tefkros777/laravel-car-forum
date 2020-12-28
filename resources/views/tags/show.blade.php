@@ -10,7 +10,7 @@
         </div>
 
         <ul>
-            @foreach ($posts as $post)
+            @foreach ($filteredPosts as $post)
             <li><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></li>
             @endforeach
         </ul>

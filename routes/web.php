@@ -47,7 +47,7 @@ Route::get('comments/{comment}/edit', 'CommentController@edit')->name('comments.
 Route::put('comments/{comment}/store', 'CommentController@update')->name('comments.update')->middleware('auth');
 
 // TAGS
-// Route::get('tags', 'TagController@index')->name('tags.index');
+Route::get('tags', 'TagController@index')->name('tags.index');
 Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
 
 

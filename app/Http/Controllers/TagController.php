@@ -51,11 +51,11 @@ class TagController extends Controller
 
         $filteredPosts = Post::whereHas('tags', function($q) use($tag) {
             $q->where('label', $tag->label);
-        })->get()->first();
+        })->get();
 
         // dd($filteredPosts);
 
-        return view('tags.index', ['tag' => $tag, 'filteredPosts' => $filteredPosts]);
+        return view('tags.show', ['tag' => $tag, 'filteredPosts' => $filteredPosts]);
 
     }
 

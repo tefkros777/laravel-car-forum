@@ -15,9 +15,17 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        $posts = Post::factory()
-            ->has(Tag::factory()->count(3)) // Create 3 tags and attach them to the post
-            ->count(12)->create();
+        // Create 4 tags
+        Tag::factory()->count(4)->create();
+
+        // Create Posts
+        $posts = Post::factory()->count(12)->create();
+
+        // Manually attach tags to posts
+        foreach($posts as $post){
+            // Attach a random tag to every post
+            $post->tags()->attach(Tag::inRandomOrder()->first());
+        }
 
         // $post = new Post();
         // $post->title='Weird noise from AC';

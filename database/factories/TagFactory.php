@@ -22,7 +22,8 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            'label'=>$this->faker->randomElement(['Oil leaks', 'Exhaust system', 'Electronics', 'Transmission & Gearbox', 'Engine', 'Bodywork']),
+            // 'label'=>$this->faker->randomElement(['Oil leaks', 'Exhaust system', 'Electronics', 'Transmission & Gearbox', 'Engine', 'Bodywork']),
+            'label'=>$this->faker->word
         ];
     }
 }

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // Call the respective Seeder class for each table
         $this->call(UserTableSeeder::class);
-        // No need to seed Tags as PostTableSeeder does it for us
+        $this->call(TagTableSeeder::class);
         $this->call(PostTableSeeder::class);
         $this->call(CommentTableSeeder::class);
     }

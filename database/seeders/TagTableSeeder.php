@@ -16,7 +16,8 @@ class TagTableSeeder extends Seeder
     {
         // Create 4 tags using the factory
         $tags = Tag::factory()->count(4)->create();
-        
+
+
         // Without a factory:
         // $tag1 = new Tag();
         // $tag1->label="Exhaust";

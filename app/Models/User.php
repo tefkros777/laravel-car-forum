@@ -22,6 +22,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Comment');
     }
 
+    public function isAdmin()
+    {
+        return $this->admin;
+    }
+
     /**
      * The attributes that are mass assignable.
      * @var array

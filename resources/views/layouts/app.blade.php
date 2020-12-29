@@ -26,6 +26,13 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', "What'\s wrong with my car?") }}
                 </a>
+                @auth
+                    @if (Auth::user()->isAdmin())
+                        <div class="text-white">
+                            <b><i>ADMINISTRATOR MODE</i></b>
+                        </div>
+                    @endif
+                @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -66,7 +66,7 @@
             </div>
         </div>
         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}" />
-        <input type="hidden" name="user_id" id="user_id" value="{{ $post->user->id }}" />
+        <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}" />
     </form>
     @endauth
     @guest

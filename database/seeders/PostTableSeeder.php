@@ -15,9 +15,6 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        // Create 4 tags
-        Tag::factory()->count(4)->create();
-
         // Create Posts
         $posts = Post::factory()->count(12)->create();
 

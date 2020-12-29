@@ -28,21 +28,22 @@
             </li>
         </ul>
         {{-- Show edit and delete button only if authenrticated user is the post's author --}}
-        {{-- @if(Auth::check()) --}}
-            @if (Auth::check() && ($post->user->id == Auth::user()->id))
-            <div class="card-footer">
-                <div class="d-flex">
-                    {{-- Edit button --}}
-                    <a class="btn btn-dark mr-1" href="/posts/{{$post->id}}/edit">Edit</a>
-                    {{-- Delete button --}}
-                    <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger">Delete Post</button>
-                    </form>
+        @auth
+            @can('manage-post', $post)
+                <div class="card-footer">
+                    <div class="d-flex">
+                        {{-- Edit button --}}
+                        <a class="btn btn-dark mr-1" href="/posts/{{$post->id}}/edit">Edit</a>
+                        {{-- Delete button --}}
+                        <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">Delete Post</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            @endif
+            @endcan
+        @endauth
         {{-- @endif --}}
     </div>
 

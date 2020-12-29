@@ -31,4 +31,8 @@ class User extends Authenticatable
         'email',
         'password'
     ];
+
+    protected $attributes = [
+        'admin' => false
+    ];
 }

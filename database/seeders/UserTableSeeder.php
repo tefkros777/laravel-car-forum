@@ -18,6 +18,14 @@ class UserTableSeeder extends Seeder
         // Just create 3 users using the factory
         $users = User::factory()->count(12)->create();
 
+        // Admin User
+        $userAdmin = new User();
+        $userAdmin->name="Admin";
+        $userAdmin->password=bcrypt('secret123');
+        $userAdmin->email="admin@test.com";
+        $userAdmin->admin=true;
+        $userAdmin->save();
+
         // Without a factory:
         // $user1 = new User();
         // $user1->name="Gianni Versace";

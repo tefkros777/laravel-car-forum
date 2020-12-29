@@ -44,15 +44,13 @@
                 </div>
             @endcan
         @endauth
-        {{-- @endif --}}
     </div>
 
     {{-- Comment Section --}}
     <h3>Comments</h3>
 
     {{-- Post comment if authenticated --}}
-    @if(Auth::check())
-
+    @auth
     <form method="POST" action="{{ route('comments.add') }}">
         @csrf
         <div class="card bg-light mb-3">
@@ -70,9 +68,10 @@
         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}" />
         <input type="hidden" name="user_id" id="user_id" value="{{ $post->user->id }}" />
     </form>
-    @else
+    @endauth
+    @guest
         <h5><i>You must me logged in to post comments</i></h5>
-    @endif
+    @endguest
 
     {{-- Existing comments --}}
     @foreach ($comments as $comment)
@@ -89,7 +88,8 @@
                 <p class="card-text">{{ $comment->text }}</p>
             </div>
             {{-- Show edit and delete button only if authenrticated user is the comment's author --}}
-            @if (Auth::check() && ($post->user->id == Auth::user()->id))
+            @auth
+            @can('manage-comment', $comment)
                 <div class="card-footer">
                     <div class="d-flex">
                         {{-- Edit button --}}
@@ -102,7 +102,8 @@
                         </form>
                     </div>
                 </div>
-            @endif
+            @endcan
+            @endauth
         </div>
     @endforeach
 

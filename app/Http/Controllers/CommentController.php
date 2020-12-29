@@ -93,7 +93,7 @@ class CommentController extends Controller
         $c->text = $validatedData['text'];
         $c->save();
 
-        return redirect()->route('posts.index')->with('message', 'Comment edited successfully');
+        return redirect()->route('posts.show', ['post' => $c->post])->with('message', 'Comment edited successfully');
     }
 
     /**

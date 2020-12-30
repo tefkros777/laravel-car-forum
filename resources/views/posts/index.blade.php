@@ -4,23 +4,37 @@
 
 @section('content')
 
-    <div class="card bg-light mb-3">
-        <div class="card-header">
-            <h3>All Posts</h3>
-        </div>
+    <div class="container">
+        <div class="col-12 card">
+            <div class="card-body">
+                <h2 class="card-title">Posts</h2>
 
-        <ul>
-            @foreach ($posts as $post)
-            <li><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></li>
-            @endforeach
-        </ul>
+                {{-- Show Create Post button only if user is authenticated --}}
+                @if(Auth::check())
+                    <a class="btn btn-success" href="{{ route('posts.create') }}">Create New Post</a>
+                @endif
 
-        {{-- Show Create Post button only if user is authenticated --}}
-        @if(Auth::check())
-            <div class="card-footer">
-                <a class="btn btn-success" href="{{ route('posts.create') }}">Create New Post</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Post Title</th>
+                            <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ul>
+                            @foreach ($posts as $post)
+                                <tr>
+                                    <td><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }} </td>
+                                    <td><a href="{{ route('users.show', ['id' => $post->user->id]) }}">{{ ($post->user->name) }} </td>
+                                </tr>
+                            @endforeach
+                        </ul>
+                    </tbody>
+                </table>
+                </div>
             </div>
-        @endif
+        </div>
     </div>
 
     {{-- Pagination --}}

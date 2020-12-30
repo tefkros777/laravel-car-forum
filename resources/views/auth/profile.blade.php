@@ -47,6 +47,7 @@
                                             <label for="profile_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
                                             <div class="col-md-6">
                                                 <input id="profile_image" type="file" class="form-control" name="profile_image">
+                                                <i>Max file size: 2MB | File extension: jpeg, png, jpg, gif or SVG etc.</i>
                                                 @if (auth()->user()->image)
                                                     <code>{{ auth()->user()->image }}</code>
                                                 @endif

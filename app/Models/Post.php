@@ -27,6 +27,17 @@ class Post extends Model
         return $this->belongsToMany('App\Models\Tag');
     }
 
+    public function getImageAttribute()
+    {
+       return $this->post_image;
+    }
+
+    protected $fillable = [
+        'title',
+        'description',
+        'post_image'
+    ];
+
     protected $attributes = [
         'solved' => false // The solved attribute is false by default
     ];

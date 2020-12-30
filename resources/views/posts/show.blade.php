@@ -27,6 +27,12 @@
                 </ul>
             </li>
         </ul>
+
+        {{-- Post image if exists --}}
+        @if ($post->image)
+        <img src="{{ asset($post->image) }}" style="width: 400px; height: 400px;">
+        @endif
+
         {{-- Show edit and delete button only if authenrticated user is the post's author --}}
         @auth
             @can('manage-post', $post)

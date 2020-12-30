@@ -7,7 +7,7 @@
 <h3>New Post</h3>
 <i>Posting as {{Auth::user()->name}}</i>
 
-<form method="POST" action="{{ route('posts.store') }}">
+<form method="POST" action="{{ route('posts.store') }}" role="form" enctype="multipart/form-data">
     @csrf
     <div class="card bg-light mb-3">
         {{-- Title --}}
@@ -21,7 +21,7 @@
                 <textarea class="border-0" name="description" rows="4" placeholder="Description"
                  style="width: 100%; max-width: 100%;"
                  value="{{ old('description') }}"></textarea>
-            </div>
+                </div>
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         </div>
 
@@ -30,6 +30,16 @@
             <a class="btn btn-secondary" href="{{ route('posts.index') }}">Cancel</a>
         </div>
     </div>
+
+    <h5>Add an image <i>(optional)</i></h5>
+    <div class="card md-3">
+        <input id="post_image" type="file" class="form-control" name="post_image">
+        <i>Max file size: 2MB | File extension: jpeg, png, jpg, gif or SVG etc.</i>
+        {{-- @if (auth()->user()->image)
+            <code>{{ auth()->user()->image }}</code>
+        @endif --}}
+    </div>
+
 </form>
 
 @endsection

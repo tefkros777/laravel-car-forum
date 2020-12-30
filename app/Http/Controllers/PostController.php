@@ -7,6 +7,8 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Str;
+use App\Traits\UploadTrait;
 
 class PostController extends Controller
 {
@@ -30,9 +32,11 @@ class PostController extends Controller
     {
         // Pass in the collection of all users to use in the dropdown menu
 
-        $users = User::orderBy('id','asc')->get(); //dead code
+        $users = User::orderBy('id', 'asc')->get(); //dead code
         return view('posts.create', ['users' => $users]);
     }
+
+    use UploadTrait;
 
     /**
      * Store a newly created resource in storage.
@@ -46,6 +50,7 @@ class PostController extends Controller
             'user_id' => 'required|numeric',
             'title' => 'required|max:255',
             'description' => 'required',
+            'post_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Create the model, put the data in it, save it to the database
@@ -54,6 +59,27 @@ class PostController extends Controller
         $p->description = $validatedData['description'];
         $p->user_id = $validatedData['user_id'];
         $p->save();
+
+        // Upload the photo after creating the post resource
+
+        // Check if a post image has been uploaded
+        if ($request->has('post_image')) {
+            // dd($request);
+            // Get image file
+            $image = $request->file('post_image');
+            // Make an image name based on post id and current timestamp
+            $name = Str::slug($p->id . '_' . time());
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $p->post_image = $filePath;
+            // Save image to the database
+            $p->save();
+        }
 
         session()->flash('message', "Post created successfully");
 
@@ -80,7 +106,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if ($post->user->id != Auth::user()->id){
+        if ($post->user->id != Auth::user()->id) {
             return redirect()->route('posts.index')->with('message', 'You are not authorised to edit this resource');
         }
         return view('posts.edit', ['post' => $post]);

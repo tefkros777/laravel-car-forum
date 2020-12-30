@@ -20,9 +20,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->boolean('solved'); // Whether an accepted answer has been found
+            $table->string('post_image')->nullable();
 
             $table->unsignedBigInteger('user_id'); // User the post belongs to
-            
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
         });

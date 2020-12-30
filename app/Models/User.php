@@ -27,6 +27,11 @@ class User extends Authenticatable
         return $this->admin;
     }
 
+    public function getImageAttribute()
+    {
+       return $this->profile_image;
+    }
+
     /**
      * The attributes that are mass assignable.
      * @var array
@@ -34,7 +39,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'profile_image'
     ];
 
     protected $attributes = [

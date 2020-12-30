@@ -50,6 +50,9 @@ Route::put('comments/{comment}/store', 'CommentController@update')->name('commen
 Route::get('tags', 'TagController@index')->name('tags.index');
 Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
 
+// PROFILE
+Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('auth');
+Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 
 Auth::routes();
 

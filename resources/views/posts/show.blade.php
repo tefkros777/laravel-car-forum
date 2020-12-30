@@ -8,25 +8,36 @@
 
     <div class="card bg-light mb-3">
         <div class="card-header">
-            <b>{{ $post->title }}</b>
+            <h5 class="card-title"> {{ $post->title }}</h5>
+            <h6 class="card-subtitle text-muted">
+                <i>
+                    Posted by:
+                    <b><a href="{{ route('users.show', ['id' => $post->user->id]) }}">
+                            {{ $post->user->name }}
+                        </a></b>
+                    on
+                    {{ $post->created_at }}
+                </i>
+            </h6>
         </div>
-        <ul>
-            <li><b>Post ID:</b> {{ $post->id }}</li>
-            <li><a href="{{ route('users.show', ['id' => $post->user->id]) }}"><b>Author:</b> {{ $post->user->name }}</a>
-            </li>
-            @if ($post->solved == 1)
-                <li><b>Solved:</b> Yes</li>
-            @else
-                <li><b>Solved:</b> No</li>
+
+        <div class="card-body">
+            <p> {{ $post->description }}</p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Post ID:</b> {{ $post->id }}
+            @if ($post->solved == 1) | <b>Solved:</b> Yes </li>
+            @else | <b>Solved:</b> No</li>
             @endif
-            <li><b>Body:</b> {{ $post->description }}</li>
-            <li><b>Tags:</b>
-                <ul>
-                    @foreach ($post->tags as $tag)
-                        <li><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }} ({{ $tag->id }})</a></li>
-                    @endforeach
-                </ul>
-            </li>
+            {{-- <li class="list-group-item">Tags go here</li> --}}
+        </ul>
+
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">Tags:</li>
+            @foreach ($post->tags as $tag)
+                <li class="list-group-item"><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }} ({{ $tag->id }})</a></li>
+            @endforeach
         </ul>
 
         {{-- Show edit and delete button only if authenrticated user is the post's author

@@ -40,12 +40,15 @@
             @endforeach
         </ul>
 
-        {{-- Show edit and delete button only if authenrticated user is the post's author
-        --}}
+        {{-- Show edit and delete button only if authenrticated user is the post's author --}}
         @auth
             @can('manage-post', $post)
                 <div class="card-footer">
                     <div class="d-flex">
+                        {{-- Mark as solved button --}}
+                        @if($post->solved == false)
+                            <a class="btn btn-success mr-1" href="/posts/{{ $post->id }}/solve">Mark as Solved</a>
+                        @endif
                         {{-- Edit button --}}
                         <a class="btn btn-dark mr-1" href="/posts/{{ $post->id }}/edit">Edit</a>
                         {{-- Delete button --}}

@@ -30,6 +30,7 @@ Route::post('posts', 'PostController@store')->name('posts.store');
 Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 Route::delete('posts/{post}', 'PostController@destroy')->name('posts.destroy');
 Route::get('posts/{post}/edit', 'PostController@edit')->name('posts.edit')->middleware('auth');
+Route::get('posts/{post}/solve', 'PostController@solve')->name('posts.solve')->middleware('auth');
 Route::put('posts/{post}/store', 'PostController@update')->name('posts.update')->middleware('auth');
 
 

@@ -9,6 +9,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Gate;
+
 
 class PostController extends Controller
 {
@@ -34,6 +36,18 @@ class PostController extends Controller
 
         $users = User::orderBy('id', 'asc')->get(); //dead code
         return view('posts.create', ['users' => $users]);
+    }
+
+    public function solve(Post $post)
+    {
+        if(!Gate::allows('manage-post', $post)){
+            abort(403);
+        }
+
+        $post->solved = true;
+        $post->save();
+        return redirect()->back()->with('message', 'Post marked as solved');
+
     }
 
     use UploadTrait;

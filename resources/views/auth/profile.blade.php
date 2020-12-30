@@ -56,6 +56,11 @@
                                         <div class="form-group row mb-0 mt-5">
                                             <div class="col-md-8 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">Update Profile</button>
+                                                <form action="{{ route('users.destroy', ['id' => auth()->user()->id]) }}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger">Delete Profile</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </form>

@@ -14,10 +14,12 @@
     </ul>
 </div>
 
-<form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
-    @method('DELETE')
-    @csrf
-    <button class="btn btn-danger">Delete User</button>
-</form>
+@if($user->id == Auth::user()->id || Auth::user()->isAdmin())
+    <form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
+        @method('DELETE')
+        @csrf
+        <button class="btn btn-danger">Delete User</button>
+    </form>
+@endif
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -95,6 +96,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if($id != Auth::user()->id){
+            abort(403);
+        }
         $user = User::findOrFail($id);
         $user->delete();
         session()->flash('message', "User deleted");

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,10 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Gate::before(function($user){
-        //     return $user->isAdmin();
-        // });
-
         Gate::before(function ($user) {
             if ($user->isAdmin()) {
                 return true;
@@ -48,5 +46,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-comment', function($user, $comment){
             return $user->id == $comment->user->id;
         });
+
     }
 }

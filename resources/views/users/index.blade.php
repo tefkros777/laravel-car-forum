@@ -14,9 +14,6 @@
             @endforeach
         </ul>
 
-        <div class="card-footer">
-            <a class="btn btn-success" href="{{ route('users.create') }}">New User</a>
-        </div>
     </div>
 
     <div class="d-flex justify-content-center">

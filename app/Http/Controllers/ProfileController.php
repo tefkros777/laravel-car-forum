@@ -23,7 +23,6 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        dd($request);
         // Form validation
         $request->validate([
             'name'              =>  'required',
@@ -54,6 +53,6 @@ class ProfileController extends Controller
         $user->save();
 
         // Return user back and show a flash message
-        return redirect()->back()->with(['message' => 'Profile updated successfully.']);
+        return redirect()->route('users.show', ['id' => $user->id])->with(['message' => 'Profile updated successfully.']);
     }
 }

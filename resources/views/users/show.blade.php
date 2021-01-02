@@ -24,13 +24,30 @@
             <li class="list-group-item"><b>Number of posts:</b> {{ $user->posts->count() }}</li>
             <li class="list-group-item"><b>Number of comments:</b> {{ $user->comments->count() }}</li>
             <li class="list-group-item"><b>Joined on:</b> {{ $user->created_at }}</li>
-            <li class="list-group-item"><b>Last updated on:</b> {{ $user->updated_at}}</li>
+            <li class="list-group-item"><b>Last updated on:</b> {{ $user->updated_at }}</li>
 
         </ul>
         @auth
-            @if (Auth::user()->isAdmin() || Auth::user()->id == $user->id)
+            {{-- Self: Delete and update --}}
+            @if (Auth::user()->id == $user->id)
                 <div class="card-footer">
-                    <a class="btn btn-primary" href="{{ route('profile') }}">Edit Profile</a>
+                    <div class="d-flex">
+                        <a class="btn btn-primary mr-1" href="{{ route('profile') }}">Edit Profile</a>
+                        <form action="{{ route('users.destroy', ['id' => auth()->user()->id]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">Delete Profile</button>
+                        </form>
+                    </div>
+                </div>
+                {{-- Admin: Only Delete --}}
+            @elseif(Auth::user()->isAdmin())
+                <div class="card-footer">
+                    <form action="{{ route('users.destroy', ['id' => auth()->user()->id]) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-danger">Delete Profile</button>
+                    </form>
                 </div>
             @endif
         @endauth

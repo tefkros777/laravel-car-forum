@@ -15,6 +15,7 @@
             <input class="border-0" type="text" name="title" placeholder="Title"
                 value="{{ old('title') }}">
         </div>
+
         {{-- Description --}}
         <div class="card-body">
             <div style="float: left; width: 100%;">
@@ -25,19 +26,21 @@
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         </div>
 
+        {{-- Tags --}}
+        <div class="card-body">
+            Tags (separated by comma): <input type="text" name="tags"/>
+        </div>
+
         <div class="card-footer">
             <input type="submit" value="Submit" class="btn btn-primary">
             <a class="btn btn-secondary" href="{{ route('posts.index') }}">Cancel</a>
         </div>
     </div>
 
-    <h5>Add an image <i>(optional)</i></h5>
-    <div class="card md-3">
+    <h5>Attach Image <i>(optional)</i></h5>
+    <div class="card">
         <input id="post_image" type="file" class="form-control" name="post_image">
-        <i>Max file size: 2MB | File extension: jpeg, png, jpg, gif or SVG etc.</i>
-        {{-- @if (auth()->user()->image)
-            <code>{{ auth()->user()->image }}</code>
-        @endif --}}
+        <i class="ml-3">Max file size: 2MB | File extension: jpeg, png, jpg, gif or SVG etc.</i>
     </div>
 
 </form>

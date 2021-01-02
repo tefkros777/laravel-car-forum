@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Traits\UploadTrait;
@@ -74,10 +75,24 @@ class PostController extends Controller
         $p->user_id = $validatedData['user_id'];
         $p->save();
 
-        // Upload the photo after creating the post resource
+        // Process Tags
+        $tagNames = explode(',',$request->get('tags')); // Separate tokens on comma
+        foreach($tagNames as $tagName)
+        {
+            $tag = Tag::where('label', $tagName)->get()->first();
 
-        // Check if a post image has been uploaded
-        if ($request->has('post_image')) {
+            if($tag) { //already exists
+                $p->tags()->attach($tag);
+            } else {
+                $newTag = new Tag;
+                $newTag->label = $tagName;
+                $newTag->save();
+                $p->tags()->attach($newTag);
+            }
+        }
+
+        // Process Photo
+        if ($request->has('post_image')) { // Check if a post image has been uploaded
             // dd($request);
             // Get image file
             $image = $request->file('post_image');

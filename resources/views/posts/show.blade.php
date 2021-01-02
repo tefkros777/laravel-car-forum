@@ -30,13 +30,12 @@
             @if ($post->solved == 1) | <b>Solved:</b> Yes </li>
             @else | <b>Solved:</b> No</li>
             @endif
-            {{-- <li class="list-group-item">Tags go here</li> --}}
         </ul>
 
         <ul class="list-group list-group-horizontal">
             <li class="list-group-item">Tags:</li>
             @foreach ($post->tags as $tag)
-                <li class="list-group-item"><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }} ({{ $tag->id }})</a></li>
+                <li class="list-group-item"><a href="{{ route('tags.show', ['tag' => $tag]) }}">{{ $tag->label }}</a></li>
             @endforeach
         </ul>
 

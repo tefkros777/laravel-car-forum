@@ -26,6 +26,20 @@
             <li class="list-group-item"><b>Joined on:</b> {{ $user->created_at }}</li>
             <li class="list-group-item"><b>Last updated on:</b> {{ $user->updated_at }}</li>
 
+            {{-- Lisence --}}
+            @auth
+                @if (Auth::user()->id == $user->id || Auth::user()->isAdmin())
+                    @if ($user->lisence) {{-- If user has a lisence --}}
+                        <li class="list-group-item" href="">
+                            <b>Lisence Number:</b>
+                            <a href="{{ route('lisence.show', ['id' => $user->id]) }}">
+                                {{ $user->lisence->lisence_number }}
+                            </a>
+                        </li>
+                    @endif
+                @endif
+            @endauth
+
         </ul>
         @auth
             {{-- Self: Delete and update --}}

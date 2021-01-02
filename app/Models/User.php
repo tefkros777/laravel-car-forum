@@ -27,6 +27,11 @@ class User extends Authenticatable
         return $this->admin;
     }
 
+    public function lisence()
+    {
+        return $this->hasOne('App\Models\Lisence');
+    }
+
     public function getImageAttribute()
     {
        return $this->profile_image;

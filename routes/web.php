@@ -55,6 +55,8 @@ Route::get('tags/{tag}', 'TagController@show')->name('tags.show');
 Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('auth');
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update')->middleware('auth');
 
+Route::get('user/{id}/lisence', 'LisenceController@show')->name('lisence.show')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

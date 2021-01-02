@@ -23,6 +23,7 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+        dd($request);
         // Form validation
         $request->validate([
             'name'              =>  'required',

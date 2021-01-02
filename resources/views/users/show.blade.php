@@ -21,23 +21,16 @@
                     Standard
                 @endif
             </li>
+            <li class="list-group-item"><b>Number of posts:</b> {{ $user->posts->count() }}</li>
+            <li class="list-group-item"><b>Number of comments:</b> {{ $user->comments->count() }}</li>
             <li class="list-group-item"><b>Joined on:</b> {{ $user->created_at }}</li>
             <li class="list-group-item"><b>Last updated on:</b> {{ $user->updated_at}}</li>
 
         </ul>
         @auth
-            @if (Auth::user()->isAdmin())
+            @if (Auth::user()->isAdmin() || Auth::user()->id == $user->id)
                 <div class="card-footer">
-
-                    <form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger">Delete User</button>
-                    </form>
-                </div>
-            @elseif (Auth::user()->id == $user->id)
-                <div class="card-footer">
-                    <i>To delete your account, click your name on the top right > Profile > Delete Profile</i>
+                    <a class="btn btn-primary" href="{{ route('profile') }}">Edit Profile</a>
                 </div>
             @endif
         @endauth

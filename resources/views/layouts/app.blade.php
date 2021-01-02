@@ -78,7 +78,7 @@
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('users.show', ['id' => Auth::user()->id]) }}">Profile</a>
                                 </div>
                             </li>
                         @endguest

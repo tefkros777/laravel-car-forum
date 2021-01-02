@@ -29,8 +29,9 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    <form action="{{ route('profile.update') }}" method="POST" role="form" enctype="multipart/form-data">
+                                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
@@ -53,9 +54,11 @@
                                                 @endif
                                             </div>
                                         </div>
+
+                                        {{-- Buttons --}}
                                         <div class="form-group row mb-0 mt-5">
                                             <div class="col-md-8 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                                                {{-- <button type="submit" class="btn btn-primary">Update Profile</button> --}}
                                                 <form action="{{ route('users.destroy', ['id' => auth()->user()->id]) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf

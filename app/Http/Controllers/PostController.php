@@ -160,7 +160,7 @@ class PostController extends Controller
         $p->description = $validatedData['description'];
         $p->save();
 
-        return redirect()->route('posts.index')->with('message', 'Post edited successfully');
+        return redirect()->route('posts.show', ['post' => $p])->with('message', 'Post edited successfully');
     }
 
     /**

@@ -19,7 +19,11 @@
                     Manual
                 @endif
             </li>
-            <li class="list-group-item"><b>Holder:</b> {{ $lisence->lisence_number }}</li>
+            <li class="list-group-item"><b>Holder:</b>
+                <a href="{{ route('users.show', ['id' => $lisence->user->id]) }}">
+                    {{ $lisence->user->name }}
+                </a>
+            </li>
         </ul>
 
     </div>

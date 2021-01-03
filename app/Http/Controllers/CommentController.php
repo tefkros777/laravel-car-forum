@@ -104,9 +104,6 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if ($comment->user->id != Auth::user()->id){
-            return redirect()->back()->with('message', 'You are not authorised to delete this comment');
-        }
         $comment->delete();
         return redirect()->back()->with('message', "Comment deleted");
     }
